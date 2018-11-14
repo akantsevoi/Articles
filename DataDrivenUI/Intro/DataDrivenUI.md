@@ -1,10 +1,10 @@
 # Data driven UI #
 
-Hi in that small sequence of notes I wanna show you my approach and thoughts/practices in development UI layer.
+Hi in that sequence of articles I wanna show you my approach and thoughts/practices in development UI layer.
 
-And firstly I wanna tell you about DataDriven View Controllers. It’s not new idea. I think you’ve heard/seen or even worked with that approach. But I want to define the terms.
+And firstly I wanna tell you about DataDriven View Controllers. It’s not a new idea. I think you’ve heard/seen or even worked with that approach. But I want to define the terms.
 
-So the main idea - we should have isolated UI components with one input point. And we should influence on our UI component only by this point. Also only UI component should define what it can do. In code it looks like this:
+So the main idea - we should make isolated UI components with one input point. And we should influence on our UI component only by this point. Also only UI component should define what it can do. In code it looks like this:
 
 ``` code
 class MyView: UIView {
@@ -24,10 +24,11 @@ class MyView: UIView {
 ```
 
 Here we see that UI component defines all possibilities of it’s data/state/actions. And that’s enough for view to do its work completely. And, another main idea - we can communicate with our view only by `props` variable. 
-One important notion - we should architect Props in a way that it’s impossible to create invalid state from them.
+One important notion - we should architect Props in a way that it’s **impossible** to create invalid state from them.
 
-There’re few pros from such a structure which I’ll explain later. Such as: fast development*, isolation, testability/screenshot testing. And cons: code duplication, bigger code base, lot’s of props transformations.
+There’re few pros from such a structure which I’ll explain later. Such as: fast UI development, isolation, testability/screenshot testing. And cons: code duplication, bigger code base, lot’s of props transformations.
 
+Now I wanna show you two examples of implementation.
 Let’s look at example below. We wanna create a simple UI component. For example loginView. I’ll do it in a simple way just as an example.
 
 Login view should have three states: input, progress, error. And I should have possibility to login only in input state, and have some information for error state. So let’s define it in our props structure:
@@ -51,7 +52,7 @@ struct Props {
 }
 ```
 
-It’s clear and understandable even at one glance you realize what this view can do. And how I can work with it. Also I can run it in playground.
+It’s clear and understandable even at one glance you realize what this view can do. And how I can work with it. Also as a bonus I can run it in playground.
 We can construct some simple test flow:
 
 ```
@@ -66,12 +67,10 @@ func loginRun(pair: LoginView.Props.NamePass) {
 let command: LoginView.Props.LoginCommand = loginRun
 view.props = LoginView.Props(state: .input(command))
 ```
-
-## Insert GIF with that view here ##
-
 Here you can see how it looks
 
 ![](login_example.gif)
+
 
 And that’s the whole principle about Data Driven approach.
 
