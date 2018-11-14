@@ -69,7 +69,7 @@ view.props = LoginView.Props(state: .input(command))
 
 ## Insert GIF with that view here ##
 
-You can find the example of create this view in [playground](https://github.com/akantsevoi/login_example.gif)
+Here you can see how it looks ![Login view example](login_example.gif)
 
 And that’s the whole principle about Data Driven approach.
 
@@ -90,5 +90,7 @@ struct Props {
 }
 ```
 It actually looks similar to your view controller if you wanna do the same you should have smart datasource which can handle range of data and provide it to our view.
+
+![Demo of inifinite scroll](infiniteScroll_example.gif)
 
 In next article I will show you my tips for development in playground. And some more examples of Data Driven UI.
