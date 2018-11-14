@@ -69,7 +69,9 @@ view.props = LoginView.Props(state: .input(command))
 
 ## Insert GIF with that view here ##
 
-Here you can see how it looks ![Login view example](login_example.gif)
+Here you can see how it looks
+
+![](login_example.gif)
 
 And that’s the whole principle about Data Driven approach.
 
